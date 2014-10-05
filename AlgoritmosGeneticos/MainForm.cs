@@ -18,14 +18,14 @@ namespace AlgoritmosGeneticos
             consolaTexto.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Bottom);
             correrGAF();
         }
-
+        
         private void correrGAF()
         {
             GAFManager gaf = GAFManager.Instance;
             Logger.Instance.setTextBox(this.consolaTexto);
-            this.consolaTexto.Text += "Inicio de algoritmo genetico \r\n";
+            Logger.Instance.appendText(Color.DarkGreen, "Inicio algoritmo", true);
             gaf.exampleFunction();
-            this.consolaTexto.Text += "Fin de algoritmo genetico";
+            Logger.Instance.appendText(Color.DarkGreen, "Fin algoritmo", true);
         }
     }
 }

@@ -28,20 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.consolaTexto = new System.Windows.Forms.TextBox();
+            this.consolaTexto = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // consolaTexto
             // 
-            this.consolaTexto.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.consolaTexto.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.consolaTexto.Location = new System.Drawing.Point(12, 12);
-            this.consolaTexto.Multiline = true;
+            this.consolaTexto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.consolaTexto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.consolaTexto.Location = new System.Drawing.Point(0, 0);
             this.consolaTexto.Name = "consolaTexto";
             this.consolaTexto.ReadOnly = true;
-            this.consolaTexto.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.consolaTexto.Size = new System.Drawing.Size(619, 358);
+            this.consolaTexto.Size = new System.Drawing.Size(643, 382);
             this.consolaTexto.TabIndex = 0;
+            this.consolaTexto.Text = "";
             this.consolaTexto.WordWrap = false;
             // 
             // MainForm
@@ -53,13 +52,14 @@
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        public System.Windows.Forms.TextBox consolaTexto;
+        internal System.Windows.Forms.RichTextBox consolaTexto;
+
+
 
     }
 }

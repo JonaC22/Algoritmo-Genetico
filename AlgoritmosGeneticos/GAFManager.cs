@@ -35,7 +35,7 @@ namespace AlgoritmosGeneticos
 
         public void exampleFunction()
         {
-            var population = new Population(populationSize: 100,
+            var population = new Population(populationSize: 20,
               chromosomeLength: 44,
               reEvaluateAll: false,
               useLinearlyNormalisedFitness: false,
@@ -85,7 +85,6 @@ namespace AlgoritmosGeneticos
 
                     //using binary F6 for fitness.
                     fitnessValue = FitnessFunctions.BinaryF6(x, y);
-                    this.logger.loguearDatos(x, y, fitnessValue);
                 }
                 else
                 {
@@ -103,6 +102,7 @@ namespace AlgoritmosGeneticos
 
         private bool Terminate(Population population, int currentGeneration, long currentEvaluation)
         {
+            this.logger.loguearResultados(population, currentGeneration, currentEvaluation);
             return currentEvaluation >= 1000;
         }
     }

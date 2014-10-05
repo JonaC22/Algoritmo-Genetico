@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GAF;
 
 namespace AlgoritmosGeneticos
 {
@@ -30,10 +31,16 @@ namespace AlgoritmosGeneticos
             this.textbox = consola;
         }
 
-        public void loguearDatos(double x, double y, double fitnessValue)
+        internal void loguearResultados(Population population, int currentGeneration, long currentEvaluation)
         {
-            textbox.Text += "Valor de x: " + x + ",Valor de y: " + y + ", FitnessValue: " + fitnessValue + "\r\n";
-        }
+            textbox.Text += "Current Generation: " + currentGeneration + " ";
+            textbox.Text += "Current Evaluation: " + currentEvaluation + "\r\n";
+            textbox.Text += "Poblacion:\r\n";
+            foreach (Chromosome cromosoma in population.Solutions)
+            {
+                textbox.Text += cromosoma.ToBinaryString() + "\r\n";
+            }
 
+        }
     }
 }

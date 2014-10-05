@@ -7,14 +7,19 @@ using GAF;
 using GAF.Operators;
 using GAF.Extensions;
 using GAF.Threading;
+using System.Windows.Forms;
 
 namespace AlgoritmosGeneticos
 {
     class GAFManager 
     {
         //GAFManager es un Singleton
+        private Logger logger;
         private static GAFManager instance;
-        private GAFManager() { }
+        private GAFManager() 
+        {
+            this.logger = Logger.Instance;
+        }
 
         public static GAFManager Instance
         {
@@ -80,7 +85,7 @@ namespace AlgoritmosGeneticos
 
                     //using binary F6 for fitness.
                     fitnessValue = FitnessFunctions.BinaryF6(x, y);
-                    loguearDatos(x, y, fitnessValue);
+                    this.logger.loguearDatos(x, y, fitnessValue);
                 }
                 else
                 {
@@ -99,11 +104,6 @@ namespace AlgoritmosGeneticos
         private bool Terminate(Population population, int currentGeneration, long currentEvaluation)
         {
             return currentEvaluation >= 1000;
-        }
-
-        private void loguearDatos(double x, double y, double fitnessValue)
-        {
-            Console.WriteLine("Valor de x: "+ x +",Valor de y: "+ y + ", FitnessValue: "+ fitnessValue);
         }
     }
 }

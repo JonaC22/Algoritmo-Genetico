@@ -14,8 +14,49 @@ namespace AlgoritmosGeneticos
         private static Logger instance = null;
         private static object padlock = new object();
         private String[] modelos = {"Chevrolet Corsa", "Ford F100", "Toyota Corolla", "Honda Civic", "Volkswagen Gol", "Renault 19", "Fiat Uno"};
+        private Dictionary<string, string> pertenencias = new Dictionary<string,string>();
+        private Dictionary<string, string> colores = new Dictionary<string,string>();
+        private Dictionary<string, string> posicion = new Dictionary<string,string>();
         private RichTextBox box;
-        private Logger() { }
+        private Logger() 
+        {
+            inicializarPertenencias();
+            inicializarColores();
+            iniciarlizarPosicion();
+        }
+
+        private void iniciarlizarPosicion()
+        {
+ 	        posicion.Add("000", "1");
+            posicion.Add("001", "2");
+            posicion.Add("010", "3");
+            posicion.Add("011", "4");
+            posicion.Add("100", "5");
+            posicion.Add("101", "6");
+            posicion.Add("110", "7");
+        }
+
+        private void inicializarColores()
+        {
+ 	        colores.Add("000", "verde");
+            colores.Add("001", "rojo");
+            colores.Add("010", "negro");
+            colores.Add("011", "bordo");
+            colores.Add("100", "gris");
+            colores.Add("101", "azul");
+            colores.Add("110", "blanco");
+        }
+
+        private void inicializarPertenencias()
+        {
+ 	        pertenencias.Add("000", "palo de golf");
+            pertenencias.Add("001", "jaula");
+            pertenencias.Add("010", "pelota de futbol");
+            pertenencias.Add("011", "notebook");
+            pertenencias.Add("100", "tostadora");
+            pertenencias.Add("101", "botiquin");
+            pertenencias.Add("110", "televisor");
+        }
 
         public static Logger Instance
         {
@@ -62,9 +103,41 @@ namespace AlgoritmosGeneticos
                 List<Gene> genes = particion.ToList<Gene>();
                 cromo.Genes.AddRange(genes);
                 appendText(Color.DarkMagenta, cromo.ToBinaryString(), false);
-                appendText(Color.Black, "   ---> "+ modelos[i], true);
+                appendText(Color.Black, "   ---> "+ modelos[i], false);
+                var genesAuxiliares = partition(genes,3);
+                int t = 0;
+                foreach (var genAuxiliar in genesAuxiliares)
+                {
+                    cromo.Genes.Clear();
+                    cromo.Genes.AddRange(genAuxiliar);
+                    string cadenaBits = cromo.ToBinaryString();
+                    if (cadenaBits == "111")
+                    {
+                        appendText(Color.YellowGreen, ", INVALIDO", false);
+                    }
+                    else
+                    {
+                        switch (t)
+                        {
+                            case 0:
+                                appendText(Color.Black, ", " + colores[cadenaBits], false);
+                                break;
+                            case 1:
+                                appendText(Color.Black, ", " + pertenencias[cadenaBits], false);
+                                break;
+                            case 2:
+                                appendText(Color.Black, ", Posicion: " + posicion[cadenaBits], false);
+                                break;
+                            default:
+                                appendText(Color.White, ", INVALIDO", false);
+                                break;
+                        }
+                    }
+                    t++;
+                }
                 i++;
-            }
+                appendText(Color.Black, " ", true);
+            }  
         }
 
         public static IEnumerable<IEnumerable<T>> partition<T>(IEnumerable<T> items,

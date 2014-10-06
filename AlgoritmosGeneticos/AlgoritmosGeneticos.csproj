@@ -50,9 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="consola.cs" />
-    <Compile Include="GAFManager.cs" />
-    <Compile Include="Logger.cs" />
+    <Compile Include="Domain\AcertijoFitnessFunction.cs" />
+    <Compile Include="Helpers\GAFManager.cs" />
+    <Compile Include="Helpers\Logger.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

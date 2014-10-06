@@ -8,6 +8,7 @@ using GAF.Operators;
 using GAF.Extensions;
 using GAF.Threading;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace AlgoritmosGeneticos
 {
@@ -35,12 +36,12 @@ namespace AlgoritmosGeneticos
 
         public void exampleFunction()
         {
-            var population = new Population(populationSize: 20,
-              chromosomeLength: 44,
+            var population = new Population(populationSize: 30,
+              chromosomeLength: 63,
               reEvaluateAll: false,
               useLinearlyNormalisedFitness: false,
-              selectionMethod: ParentSelectionMethod.FitnessProportionateSelection);
-
+              selectionMethod: ParentSelectionMethod.TournamentSelection);
+            
             var crossover = new Crossover(0.2)
             {
                 AllowDuplicates = true,
@@ -65,16 +66,21 @@ namespace AlgoritmosGeneticos
             Console.ReadLine();
         }
 
+        private bool Terminate(Population population, int currentGeneration, long currentEvaluation)
+        {
+            this.logger.loguearResultados(population, currentGeneration, currentEvaluation);
+            return currentEvaluation >= 1000;
+        }
+
         private double CalculateFitness(Chromosome chromosome)
         {
-            double fitnessValue = -1;
+            double fitnessValue = -1;  
 
             if (chromosome != null)
             {
                 double rangeConst = 200 / (System.Math.Pow(2, chromosome.Count / 2) - 1);
 
-                //for this test we are using a binary chomosome of 44 bits
-                if (chromosome.Count == 44)
+                if (chromosome.Count == 63)
                 {
                     //get x and y from the solution
                     int x1 = Convert.ToInt32(chromosome.ToBinaryString(0, chromosome.Count / 2), 2);
@@ -95,15 +101,9 @@ namespace AlgoritmosGeneticos
             {
                 //chromosome is null
                 throw new ArgumentNullException("chromosome", "The specified Chromosome is null.");
-            }  
+            }
 
             return fitnessValue;
-        }
-
-        private bool Terminate(Population population, int currentGeneration, long currentEvaluation)
-        {
-            this.logger.loguearResultados(population, currentGeneration, currentEvaluation);
-            return currentEvaluation >= 1000;
         }
     }
 }

@@ -25,9 +25,9 @@ namespace AlgoritmosGeneticos.Domain
             }
         }
 
-        public long FitnessFunction(Chromosome cromosoma)
+        public double FitnessFunction(Chromosome cromosoma)
         {
-            long valor = 0;
+            double valor = 0;
             var particiones = partition(cromosoma.Genes, 9);
             Chromosome cromo = new Chromosome();
             int i = 0;
@@ -45,23 +45,23 @@ namespace AlgoritmosGeneticos.Domain
                     string cadenaBits = cromo.ToBinaryString();
                     if (cadenaBits == "111")
                     {
-                        valor -= 1;
+                        valor -= 100;
                     }
                     else
                     {
                         switch (t)
                         {
                             case 0:
-                                valor += 1;
+                                valor += 10;
                                 break;
                             case 1:
-                                valor += 1;
+                                valor += 10;
                                 break;
                             case 2:
-                                valor += 1;
+                                valor += 10;
                                 break;
                             default:
-                                valor += 1;
+                                valor += 10;
                                 break;
                         }
                     }
@@ -69,6 +69,8 @@ namespace AlgoritmosGeneticos.Domain
                 }
                 i++;
             }
+
+            if (valor < 0) valor = 0;
             return valor;
         }
 

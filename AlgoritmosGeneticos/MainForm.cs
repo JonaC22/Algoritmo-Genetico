@@ -45,10 +45,10 @@ namespace AlgoritmosGeneticos
         
         private void correrGAF()
         {
-            GAFManager gaf = GAFManager.Instance;
+            GAFRunner gaf = GAFRunner.Instance;
             Logger.Instance.setTextBox(this.consolaTexto);
             Logger.Instance.appendText(Color.DarkGreen, "Inicio algoritmo", true);           
-            gaf.exampleFunction(progressBar, cantPoblacion, cantIteraciones);
+            gaf.correrAlgoritmoGenetico(progressBar, cantPoblacion, cantIteraciones);
             Logger.Instance.appendText(Color.DarkGreen, "Fin algoritmo", true);
         }
 

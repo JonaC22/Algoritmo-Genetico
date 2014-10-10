@@ -13,34 +13,38 @@ using AlgoritmosGeneticos.Domain;
 
 namespace AlgoritmosGeneticos
 {
-    class GAFManager 
+    class GAFRunner 
     {
-        //GAFManager es un Singleton
+        //GAFRunner es un Singleton
+        private static GAFRunner instance;
+
         private Logger logger;
+        private long fitnessRequired;
         public ProgressBar progress;
         internal int cantIteraciones;
-        private static GAFManager instance;
-        private GAFManager() 
+     
+        private GAFRunner() 
         {
             this.logger = Logger.Instance;
         }
 
-        public static GAFManager Instance
+        public static GAFRunner Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new GAFManager();
+                    instance = new GAFRunner();
                 }
                 return instance;
             }
         }
 
-        public void exampleFunction(ProgressBar progressBar, int cantPoblacion, int cantIteraciones)
+        public void correrAlgoritmoGenetico(ProgressBar progressBar, int cantPoblacion, int cantIteraciones)
         {
             this.progress = progressBar;
             this.cantIteraciones = cantIteraciones;
+            this.fitnessRequired = 210;
 
             var population = new Population(populationSize: cantPoblacion,
               chromosomeLength: 63,
@@ -64,21 +68,26 @@ namespace AlgoritmosGeneticos
             };
 
             ga.OnGenerationComplete += ga_OnGenerationComplete;
+            ga.OnRunComplete += ga_OnRunComplete;
             ga.Operators.Add(crossover);
             ga.Operators.Add(binaryMutate);
-            ga.Operators.Add(randomReplace);
+            //ga.Operators.Add(randomReplace);
             ga.Run(Terminate);
         }
 
         void ga_OnGenerationComplete(object sender, GaEventArgs e)
         {
-            this.logger.loguearResultados(e);
+            this.progress.PerformStep();
+        }
+
+        void ga_OnRunComplete(object sender, GaEventArgs e)
+        {
+            if (e.Population.MaximumFitness >= fitnessRequired || e.Generation == this.cantIteraciones) this.logger.loguearResultados(e);
         }
 
         private bool Terminate(Population population, int currentGeneration, long currentEvaluation)
         {
-            this.progress.PerformStep();
-            return population.MaximumFitness == 210 || currentGeneration == this.cantIteraciones;
+            return population.MaximumFitness >= fitnessRequired || currentGeneration == this.cantIteraciones;
         }
 
         private double CalculateFitness(Chromosome chromosome)

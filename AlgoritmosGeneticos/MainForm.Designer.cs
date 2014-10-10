@@ -75,7 +75,7 @@
             // 
             this.trackPoblacion.LargeChange = 10;
             this.trackPoblacion.Location = new System.Drawing.Point(55, 179);
-            this.trackPoblacion.Maximum = 150;
+            this.trackPoblacion.Maximum = 200;
             this.trackPoblacion.Minimum = 2;
             this.trackPoblacion.Name = "trackPoblacion";
             this.trackPoblacion.Size = new System.Drawing.Size(346, 45);
@@ -88,7 +88,7 @@
             // trackIteraciones
             // 
             this.trackIteraciones.Location = new System.Drawing.Point(55, 72);
-            this.trackIteraciones.Maximum = 100;
+            this.trackIteraciones.Maximum = 1000;
             this.trackIteraciones.Minimum = 1;
             this.trackIteraciones.Name = "trackIteraciones";
             this.trackIteraciones.Size = new System.Drawing.Size(346, 45);

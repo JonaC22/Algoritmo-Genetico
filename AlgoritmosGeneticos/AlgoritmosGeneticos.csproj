@@ -54,7 +54,7 @@
     <Compile Include="Domain\Modelo.cs" />
     <Compile Include="Domain\ModeloBuilder.cs" />
     <Compile Include="Helpers\AdapterModelo.cs" />
-    <Compile Include="Helpers\GAFManager.cs" />
+    <Compile Include="Helpers\GAFRunner.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

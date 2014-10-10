@@ -82,6 +82,7 @@
             this.trackPoblacion.SmallChange = 4;
             this.trackPoblacion.TabIndex = 4;
             this.trackPoblacion.Value = 2;
+            this.trackPoblacion.Scroll += new System.EventHandler(this.trackPoblacion_Scroll);
             this.trackPoblacion.ValueChanged += new System.EventHandler(this.trackPoblacion_ValueChanged);
             // 
             // trackIteraciones

@@ -47,7 +47,7 @@ namespace AlgoritmosGeneticos
               reEvaluateAll: false,
               useLinearlyNormalisedFitness: false,
               selectionMethod: ParentSelectionMethod.TournamentSelection);
-            
+
             var crossover = new Crossover(0.2)
             {
                 AllowDuplicates = true,
@@ -56,33 +56,35 @@ namespace AlgoritmosGeneticos
             };
 
             var binaryMutate = new BinaryMutate(mutationProbability: 0.2D, allowDuplicates: true);
-
-            var randomReplace = new RandomReplace(numberToReplace: 16, allowDuplicates: true);
+            var randomReplace = new RandomReplace(numberToReplace: 12, allowDuplicates: true);
 
             var ga = new GeneticAlgorithm(population, CalculateFitness)
             {
                 UseMemory = false
             };
 
+            ga.OnGenerationComplete += ga_OnGenerationComplete;
             ga.Operators.Add(crossover);
             ga.Operators.Add(binaryMutate);
             ga.Operators.Add(randomReplace);
-
             ga.Run(Terminate);
-            Console.ReadLine();
+        }
+
+        void ga_OnGenerationComplete(object sender, GaEventArgs e)
+        {
+            this.logger.loguearResultados(e);
         }
 
         private bool Terminate(Population population, int currentGeneration, long currentEvaluation)
         {
-            this.logger.loguearResultados(population, currentGeneration, currentEvaluation);
             this.progress.PerformStep();
-            return currentGeneration > cantIteraciones;
+            return population.MaximumFitness == 210 || currentGeneration == this.cantIteraciones;
         }
 
         private double CalculateFitness(Chromosome chromosome)
         {
-            double fitnessValue = -1;  
-
+            double fitnessValue = -1;
+            
             if (chromosome != null)
             {
                 if (chromosome.Count == 63)
@@ -99,7 +101,7 @@ namespace AlgoritmosGeneticos
                 //chromosome is null
                 throw new ArgumentNullException("chromosome", "The specified Chromosome is null.");
             }
-
+            
             return fitnessValue;
         }
     }

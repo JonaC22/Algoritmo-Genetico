@@ -51,6 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Acertijo.cs" />
+    <Compile Include="Domain\Modelo.cs" />
+    <Compile Include="Domain\ModeloBuilder.cs" />
+    <Compile Include="Helpers\AdapterModelo.cs" />
     <Compile Include="Helpers\GAFManager.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="MainForm.cs">

@@ -38,7 +38,7 @@ namespace AlgoritmosGeneticos
         {
             progressBar.Visible = true;
             progressBar.Minimum = 1;
-            progressBar.Maximum = 30;
+            progressBar.Maximum = 100;
             progressBar.Value = 1;
             progressBar.Step = 1;
         }
@@ -82,12 +82,29 @@ namespace AlgoritmosGeneticos
         {
             this.cantPoblacion = trackPoblacion.Value;
             this.labelCantIndividuos.Text = trackPoblacion.Value.ToString();
+            asignarMaxBarra();
         }
 
         private void trackIteraciones_ValueChanged(object sender, EventArgs e)
         {
             this.cantIteraciones = trackIteraciones.Value;
             this.labelCantIteraciones.Text = trackIteraciones.Value.ToString();
+            asignarMaxBarra();
+        }
+
+        private void asignarMaxBarra()
+        {
+            progressBar.Maximum = cantIteraciones;
+        }
+
+        private void trackPoblacion_Scroll(object sender, EventArgs e)
+        {
+            int valor = trackPoblacion.Value % 2;
+
+            if(valor != 0)
+            {
+                trackPoblacion.Value++;
+            }
         }
     }
 }

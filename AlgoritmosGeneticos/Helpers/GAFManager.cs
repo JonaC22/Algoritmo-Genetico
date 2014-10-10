@@ -9,6 +9,7 @@ using GAF.Extensions;
 using GAF.Threading;
 using System.Windows.Forms;
 using System.Drawing;
+using AlgoritmosGeneticos.Domain;
 
 namespace AlgoritmosGeneticos
 {
@@ -16,6 +17,8 @@ namespace AlgoritmosGeneticos
     {
         //GAFManager es un Singleton
         private Logger logger;
+        public ProgressBar progress;
+        internal int cantIteraciones;
         private static GAFManager instance;
         private GAFManager() 
         {
@@ -34,9 +37,12 @@ namespace AlgoritmosGeneticos
             }
         }
 
-        public void exampleFunction()
+        public void exampleFunction(ProgressBar progressBar, int cantPoblacion, int cantIteraciones)
         {
-            var population = new Population(populationSize: 30,
+            this.progress = progressBar;
+            this.cantIteraciones = cantIteraciones;
+
+            var population = new Population(populationSize: cantPoblacion,
               chromosomeLength: 63,
               reEvaluateAll: false,
               useLinearlyNormalisedFitness: false,
@@ -69,7 +75,8 @@ namespace AlgoritmosGeneticos
         private bool Terminate(Population population, int currentGeneration, long currentEvaluation)
         {
             this.logger.loguearResultados(population, currentGeneration, currentEvaluation);
-            return currentEvaluation >= 1000;
+            this.progress.PerformStep();
+            return currentGeneration > cantIteraciones;
         }
 
         private double CalculateFitness(Chromosome chromosome)
@@ -78,19 +85,9 @@ namespace AlgoritmosGeneticos
 
             if (chromosome != null)
             {
-                double rangeConst = 200 / (System.Math.Pow(2, chromosome.Count / 2) - 1);
-
                 if (chromosome.Count == 63)
                 {
-                    //get x and y from the solution
-                    int x1 = Convert.ToInt32(chromosome.ToBinaryString(0, chromosome.Count / 2), 2);
-                    int y1 = Convert.ToInt32(chromosome.ToBinaryString(chromosome.Count / 2, chromosome.Count / 2), 2);
-
-                    //Adjust range to -100 to +100
-                    double x = (x1 * rangeConst) - 100; double y = (y1 * rangeConst) - 100;
-
-                    //using binary F6 for fitness.
-                    fitnessValue = FitnessFunctions.BinaryF6(x, y);
+                    fitnessValue = Acertijo.Instance.FitnessFunction(chromosome);
                 }
                 else
                 {

@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\AcertijoFitnessFunction.cs" />
+    <Compile Include="Domain\Acertijo.cs" />
     <Compile Include="Helpers\GAFManager.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="MainForm.cs">

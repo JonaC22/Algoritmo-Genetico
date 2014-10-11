@@ -53,6 +53,7 @@
     <Compile Include="Domain\Acertijo.cs" />
     <Compile Include="Domain\Modelo.cs" />
     <Compile Include="Domain\ModeloBuilder.cs" />
+    <Compile Include="Domain\Pistas\Pista10.cs" />
     <Compile Include="Domain\Pistas\Pista11.cs" />
     <Compile Include="Domain\Pistas\Pista12.cs" />
     <Compile Include="Domain\Pistas\Pista13.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Domain\Pistas\Pista6.cs" />
     <Compile Include="Domain\Pistas\Pista7.cs" />
     <Compile Include="Domain\Pistas\Pista8.cs" />
+    <Compile Include="Domain\Pistas\Pista9.cs" />
     <Compile Include="Helpers\AdapterModelo.cs" />
     <Compile Include="Helpers\GAFRunner.cs" />
     <Compile Include="Helpers\Logger.cs" />

@@ -50,13 +50,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="UnitTestPista13.cs" />
-=======
     <Compile Include="UnitTestPista8.cs" />
     <Compile Include="UnitTestPista7.cs" />
     <Compile Include="UnitTestPista6.cs" />
->>>>>>> origin/master
     <Compile Include="UnitTestPista5.cs" />
     <Compile Include="UnitTestPista4.cs" />
     <Compile Include="UnitTestPista3.cs" />

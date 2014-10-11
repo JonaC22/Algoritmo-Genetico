@@ -27,7 +27,23 @@ namespace UnitTestProject
         public void TestCondicionFalsa1()
         {
             List<Modelo> modelos = new List<Modelo>();
-            modelos.Add(new Modelo("Chevrolet Corsa", "Blanco", 2, "jaula"));
+            modelos.Add(new Modelo("Chevrolet Corsa", "blanco", 5,"tostadora"));
+            modelos.Add(new Modelo("Ford F100", "rojo", 3, "televisor"));
+            modelos.Add(new Modelo("Toyota Corolla", "bordo", 1, "televisor"));
+            modelos.Add(new Modelo("Honda Civic", "verde", -1, "notebook"));
+            modelos.Add(new Modelo("Volkswagen Gol", "blanco", -1, "pelota de futbol"));
+            modelos.Add(new Modelo("Renault 19", "azul", 3, "jaula"));
+            modelos.Add(new Modelo("Fiat Uno", "blanco", 6, "jaula"));
+
+            Pista1 pista = new Pista1();
+            Assert.AreEqual(-1, pista.validar(modelos));
+        }
+
+        [TestMethod]
+        public void TestCondicionInvalida1()
+        {
+            List<Modelo> modelos = new List<Modelo>();
+            modelos.Add(new Modelo("Chevrolet Corsa", "Blanco", -1, "jaula"));
             modelos.Add(new Modelo("Fiat Uno", "Negro", 3, "notebook"));
             modelos.Add(new Modelo("Toyota Corolla", "Rojo", 5, "palo de golf"));
             modelos.Add(new Modelo("Toyota Corolla", "Rojo", 1, "pelota de futbol"));
@@ -35,7 +51,7 @@ namespace UnitTestProject
             modelos.Add(new Modelo("Toyota Corolla", "Rojo", 1, "pelota de futbol"));
 
             Pista1 pista = new Pista1();
-            Assert.AreEqual(-1, pista.validar(modelos));
+            Assert.AreEqual(-10, pista.validar(modelos));
         }
     }
 }

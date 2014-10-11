@@ -55,12 +55,10 @@ namespace AlgoritmosGeneticos
             var crossover = new Crossover(0.2)
             {
                 AllowDuplicates = true,
-                CrossoverType = CrossoverType.SinglePoint,
-                ReplacementMethod = ReplacementMethod.GenerationalReplacement
+                CrossoverType = CrossoverType.SinglePoint
             };
 
             var binaryMutate = new BinaryMutate(mutationProbability: 0.2D, allowDuplicates: true);
-            var randomReplace = new RandomReplace(numberToReplace: 12, allowDuplicates: true);
 
             var ga = new GeneticAlgorithm(population, CalculateFitness)
             {
@@ -71,17 +69,18 @@ namespace AlgoritmosGeneticos
             ga.OnRunComplete += ga_OnRunComplete;
             ga.Operators.Add(crossover);
             ga.Operators.Add(binaryMutate);
-            //ga.Operators.Add(randomReplace);
             ga.Run(Terminate);
         }
 
         void ga_OnGenerationComplete(object sender, GaEventArgs e)
         {
+            this.logger.loguearResultados(e);
             this.progress.PerformStep();
         }
 
         void ga_OnRunComplete(object sender, GaEventArgs e)
         {
+            this.logger.appendText(Color.Tomato, "TERMINO LA CORRIDA", true);
             if (e.Population.MaximumFitness >= fitnessRequired || e.Generation == this.cantIteraciones) this.logger.loguearResultados(e);
         }
 

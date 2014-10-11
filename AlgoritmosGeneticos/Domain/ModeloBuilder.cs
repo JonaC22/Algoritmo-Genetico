@@ -29,7 +29,7 @@ namespace AlgoritmosGeneticos.Domain
             }
         }
 
-        public void configurar(int indice, string _binario_pertenencia, string _binario_posicion, string _binario_color)
+        public void configurar(int indice, string _binario_color, string _binario_pertenencia, string _binario_posicion)
         {
             indice_modelo = indice;
             binario_color = _binario_color;

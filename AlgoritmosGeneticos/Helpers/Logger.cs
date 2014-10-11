@@ -84,13 +84,13 @@ namespace AlgoritmosGeneticos
                         switch (t)
                         {
                             case 0:
-                                appendText(Color.Black, ", " + adapter.getColor(cadenaBits), false);
+                                appendText(Color.Black, ", " + adapter.getColor(cadenaBits));
                                 break;
                             case 1:
-                                appendText(Color.Black, ", " + adapter.getPertenencia(cadenaBits), false);
+                                appendText(Color.Black, ", " + adapter.getPertenencia(cadenaBits));
                                 break;
                             case 2:
-                                appendText(Color.Black, ", Posicion: " + adapter.getPosicion(cadenaBits), false);
+                                appendText(Color.Black, ", Posicion: " + adapter.getPosicion(cadenaBits));
                                 break;
                             default:
                                 appendText(Color.White, ", INVALIDO", false);

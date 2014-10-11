@@ -17,6 +17,7 @@ namespace AlgoritmosGeneticos.Domain
             if (modelos[0].nombre_modelo == "Chevrolet Corsa")
             {
                 int pos = modelos[0].posicion;
+                if (pos < 0) return valorRetorno = -10;
                 resultados = modelos.FindAll(x => ((x.posicion == pos - 1) || (x.posicion == pos + 1)));
                 if (resultados.Any(x => x.pertenencia == "palo de golf")) valorRetorno = 1;
                 else valorRetorno = -1;

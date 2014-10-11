@@ -60,6 +60,9 @@
     <Compile Include="Domain\Pistas\Pista.cs" />
     <Compile Include="Domain\Pistas\Pista1.cs" />
     <Compile Include="Domain\Pistas\Pista5.cs" />
+    <Compile Include="Domain\Pistas\Pista6.cs" />
+    <Compile Include="Domain\Pistas\Pista7.cs" />
+    <Compile Include="Domain\Pistas\Pista8.cs" />
     <Compile Include="Helpers\AdapterModelo.cs" />
     <Compile Include="Helpers\GAFRunner.cs" />
     <Compile Include="Helpers\Logger.cs" />

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AlgoritmosGeneticos.Domain.Pistas
 {
     class Pista12
-    {
+    {   public Pista12() { }
         public double validar(List<Modelo> modelos)
         {
             int valorRetorno = -1;

@@ -49,8 +49,23 @@ namespace AlgoritmosGeneticos.Domain
                 valor += constanteFitness * pista.validar(modelos);
             }
 
+            //me fijo si tiene partes invalidas => decremento el valor
+            foreach (var pista in pistas)
+            {
+                valor += constanteFitness * validarInvalidos(modelos);
+            }
+
             if (valor < 0) valor = 0;
             return valor;
+        }
+
+        private int validarInvalidos(List<Modelo> modelos)
+        {
+            int valor =
+            modelos.Count(x => x.color == "INVALIDO") +
+            modelos.Count(x => x.pertenencia == "INVALIDO") +
+            modelos.Count(x => x.posicion == -1);
+            return valor * -10;
         }
 
         private List<Modelo> crearModelos(Chromosome cromosoma)

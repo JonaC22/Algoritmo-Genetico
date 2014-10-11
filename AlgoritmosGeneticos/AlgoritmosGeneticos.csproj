@@ -53,6 +53,7 @@
     <Compile Include="Domain\Acertijo.cs" />
     <Compile Include="Domain\Modelo.cs" />
     <Compile Include="Domain\ModeloBuilder.cs" />
+    <Compile Include="Domain\Pistas\Pista13.cs" />
     <Compile Include="Domain\Pistas\Pista4.cs" />
     <Compile Include="Domain\Pistas\Pista3.cs" />
     <Compile Include="Domain\Pistas\Pista2.cs" />

@@ -39,20 +39,5 @@ namespace UnitTestProject
             Pista1 pista = new Pista1();
             Assert.AreEqual(-1, pista.validar(modelos));
         }
-
-        [TestMethod]
-        public void TestCondicionInvalida1()
-        {
-            List<Modelo> modelos = new List<Modelo>();
-            modelos.Add(new Modelo("Chevrolet Corsa", "Blanco", -1, "jaula"));
-            modelos.Add(new Modelo("Fiat Uno", "Negro", 3, "notebook"));
-            modelos.Add(new Modelo("Toyota Corolla", "Rojo", 5, "palo de golf"));
-            modelos.Add(new Modelo("Toyota Corolla", "Rojo", 1, "pelota de futbol"));
-            modelos.Add(new Modelo("Toyota Corolla", "Rojo", 2, "palo de golf"));
-            modelos.Add(new Modelo("Toyota Corolla", "Rojo", 1, "pelota de futbol"));
-
-            Pista1 pista = new Pista1();
-            Assert.AreEqual(-10, pista.validar(modelos));
-        }
     }
 }

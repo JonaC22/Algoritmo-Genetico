@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 
 namespace AlgoritmosGeneticos.Domain.Pistas
 {
-    public class Pista1 : Pista
+    class Pista13
     {
-        public Pista1() { }
-
         public double validar(List<Modelo> modelos)
         {
             int valorRetorno = -1;
             List<Modelo> resultados;
-            if (modelos[0].nombre_modelo == "Chevrolet Corsa")
+            if (modelos[2].nombre_modelo == "Toyota Corolla")
             {
-                int pos = modelos[0].posicion;
+                int pos = modelos[2].posicion;
                 resultados = modelos.FindAll(x => ((x.posicion == pos - 1) || (x.posicion == pos + 1)));
-                if (resultados.Any(x => x.pertenencia == "palo de golf")) valorRetorno = 1;;
+                if (resultados.Any(x => x.color == "blanco")) valorRetorno = 1;
+                else valorRetorno = -1;
             }
             return valorRetorno;
         }

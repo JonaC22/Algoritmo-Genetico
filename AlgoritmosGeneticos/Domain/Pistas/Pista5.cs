@@ -13,21 +13,11 @@ namespace AlgoritmosGeneticos.Domain.Pistas
         public double validar(List<Modelo> modelos)
         {
             int valorRetorno = -1;
-            List<Modelo> mods_negros = modelos.Where(x => x.color.ToLower() == "negro" && x.nombre_modelo.ToLower() == "toyota corolla").ToList();
-
-            foreach (Modelo mod in mods_negros)
+            if(modelos[2].nombre_modelo == "Toyota Corolla")
             {
-                List<Modelo> mods_derecha = modelos.Where(x => x.posicion == mod.posicion + 1).ToList();
-
-                if (mods_derecha != null && mods_derecha.Exists(x => x.color.ToLower() == "blanco"))
-                    valorRetorno = 1;
-
-                List<Modelo> mods_izq = modelos.Where(x => x.posicion == mod.posicion - 1).ToList();
-
-                if (mods_izq != null && mods_izq.Exists(x => x.color.ToLower() == "blanco"))
-                    valorRetorno = 1;
+                var auto = modelos[2];
+                if (auto.color == "negro") valorRetorno = 1;
             }
-
             return valorRetorno;
         }
     }

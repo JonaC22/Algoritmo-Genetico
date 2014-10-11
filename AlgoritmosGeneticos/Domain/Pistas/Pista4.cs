@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AlgoritmosGeneticos.Domain.Pistas
 {
-    public class Pista4
+    public class Pista4 : Pista
     {
         public Pista4() { }
 

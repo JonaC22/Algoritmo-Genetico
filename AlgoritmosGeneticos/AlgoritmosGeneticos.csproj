@@ -58,6 +58,7 @@
     <Compile Include="Domain\Pistas\Pista2.cs" />
     <Compile Include="Domain\Pistas\Pista.cs" />
     <Compile Include="Domain\Pistas\Pista1.cs" />
+    <Compile Include="Domain\Pistas\Pista5.cs" />
     <Compile Include="Helpers\AdapterModelo.cs" />
     <Compile Include="Helpers\GAFRunner.cs" />
     <Compile Include="Helpers\Logger.cs" />

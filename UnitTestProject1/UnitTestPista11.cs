@@ -9,16 +9,15 @@ using AlgoritmosGeneticos.Domain;
 using System.Collections.Generic;
 
 namespace UnitTestProject
-{ 
+{
     [TestClass]
-    class UnitTestPista12
+    class UnitTestPista11
     {
         public void TestCondicionVerdadera()
         {
             List<Modelo> modelos = new List<Modelo>();
-            modelos.Add(new Modelo("Renault 19", "azul", 1, "tostadora"));
-            modelos.Add(new Modelo("Fiat Uno", "blanco", 2, "jaula"));
-            Pista12 pista = new Pista12();
+            modelos.Add(new Modelo("Chevrolet Corsa", "azul", 1, "tostadora"));
+            Pista11 pista = new Pista11();
             Assert.AreEqual(1, pista.validar(modelos));
         }
 
@@ -26,10 +25,8 @@ namespace UnitTestProject
         public void TestCondicionFalsaNoBlanco()
         {
             List<Modelo> modelos = new List<Modelo>();
-            modelos.Add(new Modelo("Renault 19", "azul", 1, "tostadora"));
-            modelos.Add(new Modelo("Chevrolet Corsa", "negro", 2, "tostadora"));
-            modelos.Add(new Modelo("Fiat Uno", "blanco", 3, "jaula"));
-            Pista12 pista = new Pista12();
+            modelos.Add(new Modelo("Chevrolet Corsa", "Azul", 2, "tostadora"));
+            Pista11 pista = new Pista11();
             Assert.AreEqual(-1, pista.validar(modelos));
         }
     }

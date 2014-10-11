@@ -14,7 +14,7 @@ namespace AlgoritmosGeneticos.Helpers
         private String[] modelos = { "Chevrolet Corsa", "Ford F100", "Toyota Corolla", "Honda Civic", "Volkswagen Gol", "Renault 19", "Fiat Uno" };
         private Dictionary<string, string> pertenencias = new Dictionary<string, string>();
         private Dictionary<string, string> colores = new Dictionary<string, string>();
-        private Dictionary<string, string> posiciones = new Dictionary<string, string>();
+        private Dictionary<string, int> posiciones = new Dictionary<string, int>();
 
         private AdapterModelo()
         {
@@ -37,14 +37,14 @@ namespace AlgoritmosGeneticos.Helpers
 
         private void iniciarlizarPosicion()
         {
-            posiciones.Add("000", "1");
-            posiciones.Add("001", "2");
-            posiciones.Add("010", "3");
-            posiciones.Add("011", "4");
-            posiciones.Add("100", "5");
-            posiciones.Add("101", "6");
-            posiciones.Add("110", "7");
-            posiciones.Add("111", "INVALIDO");
+            posiciones.Add("000", 1);
+            posiciones.Add("001", 2);
+            posiciones.Add("010", 3);
+            posiciones.Add("011", 4);
+            posiciones.Add("100", 5);
+            posiciones.Add("101", 6);
+            posiciones.Add("110", 7);
+            posiciones.Add("111", -1);
         }
 
         private void inicializarColores()
@@ -86,7 +86,7 @@ namespace AlgoritmosGeneticos.Helpers
             return pertenencias[binario_pertenencia];
         }
 
-        public string getPosicion(string binario_posicion)
+        public int getPosicion(string binario_posicion)
         {
             return posiciones[binario_posicion];
         }

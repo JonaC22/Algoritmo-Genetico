@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 namespace AlgoritmosGeneticos.Domain
 { 
     [Serializable]
-    class Modelo
+    public class Modelo
     {
         public string nombre_modelo;
         public string color;
-        public string posicion;
+        public int posicion;
         public string pertenencia;
 
-        public Modelo(string _modelo, string _color, string _posicion, string _pertenencia)
+        public Modelo(string _modelo, string _color, int _posicion, string _pertenencia)
         {
             nombre_modelo = _modelo;
             color = _color;

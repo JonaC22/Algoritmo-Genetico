@@ -5,13 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using GAF;
 using System.Drawing;
+using AlgoritmosGeneticos.Domain;
 
 namespace AlgoritmosGeneticos.Domain
 {
     class Acertijo
     {
         private static Acertijo instance;
-        private Acertijo() {}
+        private List<Pista> pistas = new List<Pista>();
+        private int constanteFitness;
+        private Acertijo() 
+        {
+            agregarPistas();
+            constanteFitness = 10;
+        }
 
         public static Acertijo Instance
         {
@@ -25,13 +32,22 @@ namespace AlgoritmosGeneticos.Domain
             }
         }
 
+        private void agregarPistas()
+        {
+            pistas.Add(new Pista1());
+        }
+
         public double FitnessFunction(Chromosome cromosoma)
         {
             double valor = 0;
 
             List<Modelo> modelos = crearModelos(cromosoma);
             
-
+            //Polimorfismo con las validaciones
+            foreach(var pista in pistas)
+            {
+                valor += constanteFitness * pista.validar(modelos);
+            }
 
             if (valor < 0) valor = 0;
             return valor;

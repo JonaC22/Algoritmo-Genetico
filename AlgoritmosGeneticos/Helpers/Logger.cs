@@ -37,6 +37,7 @@ namespace AlgoritmosGeneticos
 
         internal void loguearResultados(GaEventArgs e)
         {
+            Chromosome cromo;
             appendText(Color.Brown, "Fitness value of best chromosome: " + e.Population.MaximumFitness, true);
             appendText(Color.Red, "Current Generation: " + e.Generation + " ", false);
             appendText(Color.Red, "Current Evaluation: " + e.Evaluations, true);
@@ -44,10 +45,15 @@ namespace AlgoritmosGeneticos
 
             foreach (Chromosome cromosoma in e.Population.Solutions)
             {
+                appendText(Color.CadetBlue,"Fitness: " + cromosoma.Fitness, true);
                 appendText(Color.Blue, cromosoma.ToBinaryString(), true);
                 loguearCromosomas(cromosoma);
             }
 
+            appendText(Color.BlueViolet, "hubiese mostrado:", true);
+            cromo = e.Population.Solutions.Find(x => x.Fitness == e.Population.MaximumFitness);
+            appendText(Color.Blue, cromo.ToBinaryString(), true);
+            loguearCromosomas(cromo);
         }
 
         private void loguearCromosomas(Chromosome cromosoma)

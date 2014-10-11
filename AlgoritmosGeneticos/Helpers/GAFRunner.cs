@@ -44,12 +44,12 @@ namespace AlgoritmosGeneticos
         {
             this.progress = progressBar;
             this.cantIteraciones = cantIteraciones;
-            this.fitnessRequired = 210;
+            this.fitnessRequired = 10;
 
             var population = new Population(populationSize: cantPoblacion,
               chromosomeLength: 63,
-              reEvaluateAll: false,
-              useLinearlyNormalisedFitness: false,
+              reEvaluateAll: true,
+              useLinearlyNormalisedFitness: true,
               selectionMethod: ParentSelectionMethod.TournamentSelection);
 
             var crossover = new Crossover(0.2)

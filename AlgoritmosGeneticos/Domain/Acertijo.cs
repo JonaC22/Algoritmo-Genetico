@@ -43,7 +43,7 @@ namespace AlgoritmosGeneticos.Domain
 
             List<Modelo> modelos = crearModelos(cromosoma);
             
-            //Polimorfismo con las validaciones
+            //Polimorfismo para las validaciones
             foreach(var pista in pistas)
             {
                 valor += constanteFitness * pista.validar(modelos);

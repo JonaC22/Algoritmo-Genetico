@@ -28,55 +28,52 @@ namespace AlgoritmosGeneticos.Domain
         public double FitnessFunction(Chromosome cromosoma)
         {
             double valor = 0;
-            var particiones = partition(cromosoma.Genes, 9);
-            Chromosome cromo = new Chromosome();
-            int i = 0;
-            foreach (var particion in particiones)
-            {
-                cromo.Genes.Clear();
-                List<Gene> genes = particion.ToList<Gene>();
-                cromo.Genes.AddRange(genes);
-                var genesAuxiliares = partition(genes, 3);
-                int t = 0;
-                foreach (var genAuxiliar in genesAuxiliares)
-                {
-                    cromo.Genes.Clear();
-                    cromo.Genes.AddRange(genAuxiliar);
-                    string cadenaBits = cromo.ToBinaryString();
-                    if (cadenaBits == "111")
-                    {
-                        valor -= 100;
-                    }
-                    else
-                    {
-                        switch (t)
-                        {
-                            case 0:
-                                valor += 10;
-                                break;
-                            case 1:
-                                valor += 10;
-                                break;
-                            case 2:
-                                valor += 10;
-                                break;
-                            default:
-                                valor += 10;
-                                break;
-                        }
-                    }
-                    t++;
-                }
-                i++;
-            }
+
+            List<Modelo> modelos = crearModelos(cromosoma);
+            
+
 
             if (valor < 0) valor = 0;
             return valor;
         }
 
+        private List<Modelo> crearModelos(Chromosome cromosoma)
+        {
+            var particiones = particionar(cromosoma.Genes, 9);
+            List<Modelo> modelos = new List<Modelo>();
+            int indice = 0;
+
+            foreach(var particion in particiones)
+            {
+                List<string> genesAuxiliares = obtenerGenesAuxiliares(particion.ToList<Gene>());
+                ModeloBuilder builder = ModeloBuilder.Instance;
+                builder.configurar(indice, genesAuxiliares[0], genesAuxiliares[1], genesAuxiliares[2]);
+                Modelo modelo = builder.build();
+                modelos.Add(modelo);
+                indice++;
+            }
+            return modelos;
+        }
+
+        private List<string> obtenerGenesAuxiliares(List<Gene> particion)
+        {
+            Chromosome cromosoma = new Chromosome();
+            List<string> caracteristicas = new List<string>();
+            var genes = particionar(particion, 3);
+            int i = 0;
+            foreach (var gen in genes)
+            {
+                cromosoma.Genes.Clear();
+                cromosoma.Genes.AddRange(gen.ToList<Gene>());
+                string cadenaBits = cromosoma.ToBinaryString();
+                caracteristicas.Insert(i,cadenaBits);
+                i++;
+            }
+            return caracteristicas;
+        }
 
         //metodo para particionar el cromosoma en particiones mas chicas (genes principales y genes auxiliares)
-        public static IEnumerable<IEnumerable<T>> partition<T>(IEnumerable<T> items,
+        public static IEnumerable<IEnumerable<T>> particionar<T>(IEnumerable<T> items,
                                                        int partitionSize)
         {
             if (partitionSize <= 0)

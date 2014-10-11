@@ -11,12 +11,31 @@ namespace AlgoritmosGeneticos.Domain
     class ModeloBuilder
     {
         private static ModeloBuilder instance;
-        private ModeloBuilder() { }
-
         public int indice_modelo;
         public string binario_pertenencia;
         public string binario_posicion;
         public string binario_color;
+        private ModeloBuilder() { }
+
+        public static ModeloBuilder Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ModeloBuilder();
+                }
+                return instance;
+            }
+        }
+
+        public void configurar(int indice, string _binario_pertenencia, string _binario_posicion, string _binario_color)
+        {
+            indice_modelo = indice;
+            binario_color = _binario_color;
+            binario_pertenencia = _binario_pertenencia;
+            binario_posicion = _binario_posicion;
+        }
 
         public Modelo build()
         {

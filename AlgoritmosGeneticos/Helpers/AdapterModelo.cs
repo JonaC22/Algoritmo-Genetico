@@ -44,6 +44,7 @@ namespace AlgoritmosGeneticos.Helpers
             posiciones.Add("100", "5");
             posiciones.Add("101", "6");
             posiciones.Add("110", "7");
+            posiciones.Add("111", "INVALIDO");
         }
 
         private void inicializarColores()
@@ -55,6 +56,7 @@ namespace AlgoritmosGeneticos.Helpers
             colores.Add("100", "gris");
             colores.Add("101", "azul");
             colores.Add("110", "blanco");
+            colores.Add("111", "INVALIDO");
         }
 
         private void inicializarPertenencias()
@@ -66,6 +68,7 @@ namespace AlgoritmosGeneticos.Helpers
             pertenencias.Add("100", "tostadora");
             pertenencias.Add("101", "botiquin");
             pertenencias.Add("110", "televisor");
+            pertenencias.Add("111", "INVALIDO");
         }
 
         public string getModelo(int indice)

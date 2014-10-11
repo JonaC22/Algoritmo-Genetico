@@ -52,7 +52,7 @@ namespace AlgoritmosGeneticos
 
         private void loguearCromosomas(Chromosome cromosoma)
         {
-            var particiones = Acertijo.partition(cromosoma.Genes, 9);
+            var particiones = Acertijo.particionar(cromosoma.Genes, 9);
             Chromosome cromo = new Chromosome();
             int i = 0;
             foreach (var particion in particiones)
@@ -62,7 +62,7 @@ namespace AlgoritmosGeneticos
                 cromo.Genes.AddRange(genes);
                 appendText(Color.DarkMagenta, cromo.ToBinaryString(), false);
                 appendText(Color.Black, "   ---> " + adapter.getModelo(i), false);
-                var genesAuxiliares = Acertijo.partition(genes, 3);
+                var genesAuxiliares = Acertijo.particionar(genes, 3);
                 int t = 0;
                 foreach (var genAuxiliar in genesAuxiliares)
                 {

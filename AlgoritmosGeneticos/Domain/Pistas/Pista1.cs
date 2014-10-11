@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlgoritmosGeneticos.Domain
+namespace AlgoritmosGeneticos.Domain.Pistas
 {
     public class Pista1 : Pista
     {

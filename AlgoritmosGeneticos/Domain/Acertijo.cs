@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GAF;
 using System.Drawing;
-using AlgoritmosGeneticos.Domain;
+using AlgoritmosGeneticos.Domain.Pistas;
 
 namespace AlgoritmosGeneticos.Domain
 {
@@ -14,7 +14,7 @@ namespace AlgoritmosGeneticos.Domain
         private static Acertijo instance;
         private List<Pista> pistas = new List<Pista>();
         private int constanteFitness;
-        private Acertijo() 
+        private Acertijo()
         {
             agregarPistas();
             constanteFitness = 10;
@@ -35,6 +35,10 @@ namespace AlgoritmosGeneticos.Domain
         private void agregarPistas()
         {
             pistas.Add(new Pista1());
+            pistas.Add(new Pista2());
+            pistas.Add(new Pista3());
+            pistas.Add(new Pista4());
+            pistas.Add(new Pista5());
         }
 
         public double FitnessFunction(Chromosome cromosoma)
@@ -42,9 +46,9 @@ namespace AlgoritmosGeneticos.Domain
             double valor = 0;
 
             List<Modelo> modelos = crearModelos(cromosoma);
-            
+
             //Polimorfismo para las validaciones
-            foreach(var pista in pistas)
+            foreach (var pista in pistas)
             {
                 valor += constanteFitness * pista.validar(modelos);
             }
@@ -61,6 +65,7 @@ namespace AlgoritmosGeneticos.Domain
 
         private int validarInvalidos(List<Modelo> modelos)
         {
+            //valido que no tenga cadena de bits invalidas
             int valor =
             modelos.Count(x => x.color == "INVALIDO") +
             modelos.Count(x => x.pertenencia == "INVALIDO") +
@@ -74,7 +79,7 @@ namespace AlgoritmosGeneticos.Domain
             List<Modelo> modelos = new List<Modelo>();
             int indice = 0;
 
-            foreach(var particion in particiones)
+            foreach (var particion in particiones)
             {
                 List<string> genesAuxiliares = obtenerGenesAuxiliares(particion.ToList<Gene>());
                 ModeloBuilder builder = ModeloBuilder.Instance;
@@ -97,7 +102,7 @@ namespace AlgoritmosGeneticos.Domain
                 cromosoma.Genes.Clear();
                 cromosoma.Genes.AddRange(gen.ToList<Gene>());
                 string cadenaBits = cromosoma.ToBinaryString();
-                caracteristicas.Insert(i,cadenaBits);
+                caracteristicas.Insert(i, cadenaBits);
                 i++;
             }
             return caracteristicas;

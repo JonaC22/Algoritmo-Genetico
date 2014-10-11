@@ -52,13 +52,16 @@ namespace AlgoritmosGeneticos
               useLinearlyNormalisedFitness: true,
               selectionMethod: ParentSelectionMethod.TournamentSelection);
 
+
             var crossover = new Crossover(0.2)
             {
-                AllowDuplicates = true,
-                CrossoverType = CrossoverType.SinglePoint
+                AllowDuplicates = false,
+                CrossoverType = CrossoverType.DoublePoint
             };
 
-            var binaryMutate = new BinaryMutate(mutationProbability: 0.2D, allowDuplicates: true);
+            var binaryMutate = new BinaryMutate(mutationProbability: 0.2D, allowDuplicates: false);
+            var randomReplace = new RandomReplace(numberToReplace: 21, allowDuplicates: false);
+            var elite = new Elite(50);
 
             var ga = new GeneticAlgorithm(population, CalculateFitness)
             {
@@ -68,7 +71,9 @@ namespace AlgoritmosGeneticos
             ga.OnGenerationComplete += ga_OnGenerationComplete;
             ga.OnRunComplete += ga_OnRunComplete;
             ga.Operators.Add(crossover);
+            ga.Operators.Add(randomReplace);
             ga.Operators.Add(binaryMutate);
+            ga.Operators.Add(elite);
             ga.Run(Terminate);
         }
 

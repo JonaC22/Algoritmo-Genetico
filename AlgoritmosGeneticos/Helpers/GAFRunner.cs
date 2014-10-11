@@ -74,7 +74,6 @@ namespace AlgoritmosGeneticos
 
         void ga_OnGenerationComplete(object sender, GaEventArgs e)
         {
-            this.logger.loguearResultados(e);
             this.progress.PerformStep();
         }
 

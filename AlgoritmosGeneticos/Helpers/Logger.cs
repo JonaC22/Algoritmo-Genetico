@@ -38,9 +38,9 @@ namespace AlgoritmosGeneticos
         internal void loguearResultados(GaEventArgs e)
         {
             Chromosome cromo;
-            appendText(Color.Brown, "Fitness value of best chromosome: " + e.Population.MaximumFitness, true);
-            appendText(Color.Red, "Current Generation: " + e.Generation + " ", false);
-            appendText(Color.Red, "Current Evaluation: " + e.Evaluations, true);
+            appendText(Color.Brown, "El mayor valor de ajuste alcanzado por la poblacion: " + e.Population.MaximumFitness, true);
+            appendText(Color.Red, "Numero de iteracion: " + e.Generation);
+            appendText(Color.Red, ", Acumulado de cromosomas evaluados: " + e.Evaluations, true);
             appendText(Color.Black, "Poblacion:", true);
 
             foreach (Chromosome cromosoma in e.Population.Solutions)
@@ -50,7 +50,7 @@ namespace AlgoritmosGeneticos
                 loguearCromosomas(cromosoma);
             }
 
-            appendText(Color.BlueViolet, "hubiese mostrado:", true);
+            appendText(Color.BlueViolet, "Solucion:", true);
             cromo = e.Population.Solutions.Find(x => x.Fitness == e.Population.MaximumFitness);
             appendText(Color.Blue, cromo.ToBinaryString(), true);
             loguearCromosomas(cromo);

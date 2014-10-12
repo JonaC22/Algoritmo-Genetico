@@ -76,8 +76,8 @@ namespace AlgoritmosGeneticos
             ga.OnGenerationComplete += ga_OnGenerationComplete;
             ga.OnRunComplete += ga_OnRunComplete;
             ga.Operators.Add(crossover);
-            ga.Operators.Add(randomReplace);
-            ga.Operators.Add(binaryMutate);
+            //ga.Operators.Add(randomReplace);
+            //ga.Operators.Add(binaryMutate);
             ga.Operators.Add(elite);
             ga.Run(Terminate);
         }

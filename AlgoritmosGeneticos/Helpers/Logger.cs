@@ -48,7 +48,6 @@ namespace AlgoritmosGeneticos
 
             appendText(Color.BlueViolet, "Solucion:", true);
             cromo = e.Population.Solutions.Find(x => x.Fitness == e.Population.MaximumFitness);
-            appendText(Color.Blue, cromo.ToBinaryString(), true);
             loguearCromosoma(cromo);
 
             appendText(Color.BlueViolet, "Mejor solucion de la corrida:", true);

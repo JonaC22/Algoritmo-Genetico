@@ -13,18 +13,18 @@ namespace AlgoritmosGeneticos.Domain.Pistas
         public double validar(List<Modelo> modelos)
         {
             int valorRetorno = -1;
-            List<Modelo> mods_con_jaulas = modelos.Where(x => x.pertenencia.ToLower() == "jaula").ToList();
+            List<Modelo> mods_con_jaulas = modelos.FindAll(x => x.pertenencia == "jaula");
 
             foreach (Modelo mod in mods_con_jaulas)
             {
-                List<Modelo> mod_derecha = modelos.Where(x => x.posicion == mod.posicion + 1).ToList();
+                List<Modelo> mod_derecha = modelos.FindAll(x => x.posicion == mod.posicion + 1);
 
-                if (mod_derecha != null && mod_derecha.Exists(x => x.nombre_modelo.ToLower() == "ford f100") )
+                if (mod_derecha != null && mod_derecha.Exists(x => x.nombre_modelo == "Ford F100"))
                     valorRetorno = 1;
 
-                List<Modelo> mod_izq = modelos.Where(x => x.posicion == mod.posicion - 1).ToList();
+                List<Modelo> mod_izq = modelos.FindAll(x => x.posicion == mod.posicion - 1);
 
-                if (mod_izq != null && mod_izq.Exists(x => x.nombre_modelo.ToLower() == "ford f100"))
+                if (mod_izq != null && mod_izq.Exists(x => x.nombre_modelo == "Ford F100"))
                     valorRetorno = 1;
             }
 

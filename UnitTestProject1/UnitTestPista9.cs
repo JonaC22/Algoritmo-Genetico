@@ -13,10 +13,10 @@ namespace UnitTestProject
         public void TestCondicionVerdaderaDerecha9()
         {
             List<Modelo> modelos = new List<Modelo>();
-            modelos.Add(new Modelo("Chevrolet Corsa", "Blanco", 2, "tostadora"));
-            modelos.Add(new Modelo("Fiat Uno", "Negro", 3, "jaula"));
-            modelos.Add(new Modelo("Toyota Corolla", "Rojo", 4, "pelota de futbol"));
-            modelos.Add(new Modelo("Honda Civic", "Gris", 5, "televisor"));
+            modelos.Add(new Modelo("Chevrolet Corsa", "blanco", 2, "tostadora"));
+            modelos.Add(new Modelo("Fiat Uno", "negro", 3, "jaula"));
+            modelos.Add(new Modelo("Toyota Corolla", "rojo", 4, "pelota de futbol"));
+            modelos.Add(new Modelo("Honda Civic", "gris", 5, "televisor"));
             modelos.Add(new Modelo("Toyota Corolla", "blanco", 6, "tostadora"));
             modelos.Add(new Modelo("Toyota Corolla", "verde", 7, "palo de golf"));
 
@@ -28,10 +28,10 @@ namespace UnitTestProject
         public void TestCondicionVerdaderaIzquierda9()
         {
             List<Modelo> modelos = new List<Modelo>();
-            modelos.Add(new Modelo("Chevrolet Corsa", "Blanco", 2, "tostadora"));
-            modelos.Add(new Modelo("Fiat Uno", "Negro", 3, "jaula"));
-            modelos.Add(new Modelo("Toyota Corolla", "Rojo", 4, "tostadora"));
-            modelos.Add(new Modelo("Honda Civic", "Gris", 5, "televisor"));
+            modelos.Add(new Modelo("Chevrolet Corsa", "blanco", 2, "tostadora"));
+            modelos.Add(new Modelo("Fiat Uno", "negro", 3, "jaula"));
+            modelos.Add(new Modelo("Toyota Corolla", "rojo", 4, "tostadora"));
+            modelos.Add(new Modelo("Honda Civic", "gris", 5, "televisor"));
             modelos.Add(new Modelo("Toyota Corolla", "blanco", 6, "pelota de futbol"));
             modelos.Add(new Modelo("Toyota Corolla", "verde", 7, "palo de golf"));
 
@@ -43,10 +43,10 @@ namespace UnitTestProject
         public void TestCondicionFalsoNoTostadora9()
         {
             List<Modelo> modelos = new List<Modelo>();
-            modelos.Add(new Modelo("Chevrolet Corsa", "Blanco", 2, "tostadora"));
-            modelos.Add(new Modelo("Fiat Uno", "Negro", 3, "jaula"));
-            modelos.Add(new Modelo("Toyota Corolla", "Rojo", 4, "noteboook"));
-            modelos.Add(new Modelo("Honda Civic", "Gris", 5, "televisor"));
+            modelos.Add(new Modelo("Chevrolet Corsa", "blanco", 2, "tostadora"));
+            modelos.Add(new Modelo("Fiat Uno", "negro", 3, "jaula"));
+            modelos.Add(new Modelo("Toyota Corolla", "rojo", 4, "noteboook"));
+            modelos.Add(new Modelo("Honda Civic", "gris", 5, "televisor"));
             modelos.Add(new Modelo("Toyota Corolla", "blanco", 6, "pelota de futbol"));
             modelos.Add(new Modelo("Toyota Corolla", "verde", 7, "palo de golf"));
 
@@ -58,10 +58,10 @@ namespace UnitTestProject
         public void TestCondicionFalsoNoCivic9()
         {
             List<Modelo> modelos = new List<Modelo>();
-            modelos.Add(new Modelo("Chevrolet Corsa", "Blanco", 2, "tostadora"));
-            modelos.Add(new Modelo("Fiat Uno", "Negro", 3, "jaula"));
-            modelos.Add(new Modelo("Toyota Corolla", "Rojo", 4, "noteboook"));
-            modelos.Add(new Modelo("Toyota Corolla", "Gris", 5, "televisor"));
+            modelos.Add(new Modelo("Chevrolet Corsa", "blanco", 2, "tostadora"));
+            modelos.Add(new Modelo("Fiat Uno", "negro", 3, "jaula"));
+            modelos.Add(new Modelo("Toyota Corolla", "rojo", 4, "noteboook"));
+            modelos.Add(new Modelo("Toyota Corolla", "gris", 5, "televisor"));
             modelos.Add(new Modelo("Toyota Corolla", "blanco", 6, "pelota de futbol"));
             modelos.Add(new Modelo("Toyota Corolla", "verde", 7, "palo de golf"));
 

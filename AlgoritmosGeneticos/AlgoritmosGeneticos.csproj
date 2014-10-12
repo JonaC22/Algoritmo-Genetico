@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomOperators\MutacionPorTemperatura.cs" />
     <Compile Include="Domain\Acertijo.cs" />
     <Compile Include="Domain\Modelo.cs" />
     <Compile Include="Domain\ModeloBuilder.cs" />

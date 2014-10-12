@@ -12,6 +12,7 @@ using System.Drawing;
 using AlgoritmosGeneticos.Domain;
 using System.Diagnostics;
 using System.Windows.Forms.DataVisualization.Charting;
+using AlgoritmosGeneticos.CustomOperators;
 
 namespace AlgoritmosGeneticos
 {
@@ -64,10 +65,10 @@ namespace AlgoritmosGeneticos
                 CrossoverType = CrossoverType.DoublePoint
             };
 
-            var binaryMutate = new BinaryMutate(mutationProbability: 0.01D, allowDuplicates: true);
-            var randomReplace = new RandomReplace(numberToReplace: 21, allowDuplicates: true);
+            //var binaryMutate = new BinaryMutate(mutationProbability: 0.01D, allowDuplicates: true);
+            //var randomReplace = new RandomReplace(numberToReplace: 3, allowDuplicates: true);
             var elite = new Elite(100);
-
+            var tempMutate = new MutacionPorTemperatura(0.01D, 0.07D, cantIteraciones, true);
             var ga = new GeneticAlgorithm(population, CalculateFitness)
             {
                 UseMemory = false
@@ -77,7 +78,8 @@ namespace AlgoritmosGeneticos
             ga.OnRunComplete += ga_OnRunComplete;
             ga.Operators.Add(crossover);
             //ga.Operators.Add(randomReplace);
-            ga.Operators.Add(binaryMutate);
+            ga.Operators.Add(tempMutate);
+            //ga.Operators.Add(binaryMutate);
             ga.Operators.Add(elite);
             ga.Run(Terminate);
         }

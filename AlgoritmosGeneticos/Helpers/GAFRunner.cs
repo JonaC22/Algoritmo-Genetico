@@ -49,7 +49,7 @@ namespace AlgoritmosGeneticos
             reloj.Start();
             this.progress = progressBar;
             this.cantIteraciones = cantIteraciones;
-            this.fitnessRequired = 40;
+            this.fitnessRequired = 150;
 
             var population = new Population(populationSize: cantPoblacion,
               chromosomeLength: 63,
@@ -64,7 +64,7 @@ namespace AlgoritmosGeneticos
                 CrossoverType = CrossoverType.DoublePoint
             };
 
-            var binaryMutate = new BinaryMutate(mutationProbability: 0.2D, allowDuplicates: true);
+            var binaryMutate = new BinaryMutate(mutationProbability: 0.01D, allowDuplicates: true);
             var randomReplace = new RandomReplace(numberToReplace: 21, allowDuplicates: true);
             var elite = new Elite(100);
 
@@ -77,7 +77,7 @@ namespace AlgoritmosGeneticos
             ga.OnRunComplete += ga_OnRunComplete;
             ga.Operators.Add(crossover);
             //ga.Operators.Add(randomReplace);
-            //ga.Operators.Add(binaryMutate);
+            ga.Operators.Add(binaryMutate);
             ga.Operators.Add(elite);
             ga.Run(Terminate);
         }

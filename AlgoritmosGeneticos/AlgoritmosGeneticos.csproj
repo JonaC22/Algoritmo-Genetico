@@ -67,6 +67,12 @@
     <Compile Include="Domain\Pistas\Pista7.cs" />
     <Compile Include="Domain\Pistas\Pista8.cs" />
     <Compile Include="Domain\Pistas\Pista9.cs" />
+    <Compile Include="Grafica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grafica.Designer.cs">
+      <DependentUpon>Grafica.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\AdapterModelo.cs" />
     <Compile Include="Helpers\GAFRunner.cs" />
     <Compile Include="Helpers\Logger.cs" />
@@ -84,6 +90,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Grafica.resx">
+      <DependentUpon>Grafica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

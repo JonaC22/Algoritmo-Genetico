@@ -16,6 +16,9 @@ namespace AlgoritmosGeneticos
         private static Logger instance = null;
         private RichTextBox box;
         private AdapterModelo adapter = AdapterModelo.Instance;
+        public Chromosome mejorSolucion;
+        public int mejorIteracion = 0;
+        public long mejorGeneracion = 0;
         private Logger() { }
 
         public static Logger Instance
@@ -40,24 +43,36 @@ namespace AlgoritmosGeneticos
             Chromosome cromo;
             appendText(Color.Brown, "El mayor valor de ajuste alcanzado por la poblacion: " + e.Population.MaximumFitness, true);
             appendText(Color.Red, "Numero de iteracion: " + e.Generation);
-            appendText(Color.Red, ", Acumulado de cromosomas evaluados: " + e.Evaluations, true);
+            appendText(Color.Red, ", Cantidad de cromosomas evaluados: " + e.Evaluations, true);
             appendText(Color.Black, "Poblacion:", true);
-
-            foreach (Chromosome cromosoma in e.Population.Solutions)
-            {
-                appendText(Color.CadetBlue,"Fitness: " + cromosoma.Fitness, true);
-                appendText(Color.Blue, cromosoma.ToBinaryString(), true);
-                loguearCromosomas(cromosoma);
-            }
 
             appendText(Color.BlueViolet, "Solucion:", true);
             cromo = e.Population.Solutions.Find(x => x.Fitness == e.Population.MaximumFitness);
             appendText(Color.Blue, cromo.ToBinaryString(), true);
-            loguearCromosomas(cromo);
+            loguearCromosoma(cromo);
+
+            appendText(Color.BlueViolet, "Mejor solucion de la corrida:", true);
+            if (mejorIteracion != 0)
+            {
+                appendText(Color.Red, "Numero de iteracion: " + mejorIteracion);
+                appendText(Color.Red, ", Cantidad de cromosomas evaluados: " + mejorGeneracion, true);
+                loguearCromosoma(mejorSolucion);
+            }
+            else appendText(Color.HotPink, "No hubo una mejor solucion durante la corrida", true);
+
+            appendText(Color.BlueViolet, "Poblacion de la solucion:", true);
+
+            foreach (Chromosome cromosoma in e.Population.Solutions)
+            {
+                loguearCromosoma(cromosoma);
+            }
+
         }
 
-        private void loguearCromosomas(Chromosome cromosoma)
+        private void loguearCromosoma(Chromosome cromosoma)
         {
+            appendText(Color.CadetBlue, "Fitness: " + cromosoma.Fitness, true);
+            appendText(Color.Blue, cromosoma.ToBinaryString(), true);
             var particiones = Acertijo.particionar(cromosoma.Genes, 9);
             Chromosome cromo = new Chromosome();
             int i = 0;
@@ -66,8 +81,8 @@ namespace AlgoritmosGeneticos
                 cromo.Genes.Clear();
                 List<Gene> genes = particion.ToList<Gene>();
                 cromo.Genes.AddRange(genes);
-                appendText(Color.DarkMagenta, cromo.ToBinaryString(), false);
-                appendText(Color.Black, "   ---> " + adapter.getModelo(i), false);
+                appendText(Color.DarkMagenta, cromo.ToBinaryString());
+                appendText(Color.Black, "   ---> " + adapter.getModelo(i));
                 var genesAuxiliares = Acertijo.particionar(genes, 3);
                 int t = 0;
                 foreach (var genAuxiliar in genesAuxiliares)
@@ -77,7 +92,7 @@ namespace AlgoritmosGeneticos
                     string cadenaBits = cromo.ToBinaryString();
                     if (cadenaBits == "111")
                     {
-                        appendText(Color.YellowGreen, ", INVALIDO", false);
+                        appendText(Color.YellowGreen, ", INVALIDO");
                     }
                     else
                     {
@@ -93,7 +108,7 @@ namespace AlgoritmosGeneticos
                                 appendText(Color.Black, ", Posicion: " + adapter.getPosicion(cadenaBits));
                                 break;
                             default:
-                                appendText(Color.White, ", INVALIDO", false);
+                                appendText(Color.White, ", INVALIDO");
                                 break;
                         }
                     }
@@ -118,6 +133,13 @@ namespace AlgoritmosGeneticos
             box.SelectionColor = color;
             box.AppendText(text);
             box.SelectionColor = box.ForeColor;
+        }
+
+        internal void asignarMejorSolucion(Chromosome cromo, int iteracion, long generacion)
+        {
+            this.mejorSolucion = cromo;
+            this.mejorIteracion = iteracion;
+            this.mejorGeneracion = generacion;
         }
     }
 }

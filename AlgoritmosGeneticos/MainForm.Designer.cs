@@ -78,7 +78,7 @@
             this.trackPoblacion.Maximum = 200;
             this.trackPoblacion.Minimum = 2;
             this.trackPoblacion.Name = "trackPoblacion";
-            this.trackPoblacion.Size = new System.Drawing.Size(346, 45);
+            this.trackPoblacion.Size = new System.Drawing.Size(543, 45);
             this.trackPoblacion.SmallChange = 4;
             this.trackPoblacion.TabIndex = 4;
             this.trackPoblacion.Value = 2;
@@ -88,10 +88,10 @@
             // trackIteraciones
             // 
             this.trackIteraciones.Location = new System.Drawing.Point(55, 72);
-            this.trackIteraciones.Maximum = 1000;
+            this.trackIteraciones.Maximum = 100;
             this.trackIteraciones.Minimum = 1;
             this.trackIteraciones.Name = "trackIteraciones";
-            this.trackIteraciones.Size = new System.Drawing.Size(346, 45);
+            this.trackIteraciones.Size = new System.Drawing.Size(543, 45);
             this.trackIteraciones.TabIndex = 4;
             this.trackIteraciones.Value = 1;
             this.trackIteraciones.ValueChanged += new System.EventHandler(this.trackIteraciones_ValueChanged);
@@ -153,7 +153,7 @@
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.consolaTexto);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Algoritmo Genético";
             ((System.ComponentModel.ISupportInitialize)(this.trackPoblacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackIteraciones)).EndInit();
             this.ResumeLayout(false);

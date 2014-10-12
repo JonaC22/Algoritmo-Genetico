@@ -51,7 +51,7 @@ namespace AlgoritmosGeneticos.Domain
 
         public double FitnessFunction(Chromosome cromosoma)
         {
-            double valor = 50;
+            double valor = 200;
 
             List<Modelo> modelos = crearModelos(cromosoma);
 

@@ -36,6 +36,8 @@
             // 
             // chart
             // 
+            chartArea1.AxisX.Title = "Iteraciones";
+            chartArea1.AxisY.Title = "Valor de aptitud";
             chartArea1.Name = "ChartArea1";
             this.chart.ChartAreas.Add(chartArea1);
             this.chart.Location = new System.Drawing.Point(23, 12);

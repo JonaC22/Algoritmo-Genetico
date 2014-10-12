@@ -49,7 +49,7 @@ namespace AlgoritmosGeneticos
             reloj.Start();
             this.progress = progressBar;
             this.cantIteraciones = cantIteraciones;
-            this.fitnessRequired = 170;
+            this.fitnessRequired = 330;
 
             var population = new Population(populationSize: cantPoblacion,
               chromosomeLength: 63,
@@ -93,7 +93,7 @@ namespace AlgoritmosGeneticos
         {
             reloj.Stop();
             this.logger.appendText(Color.Tomato, "TERMINO LA CORRIDA ("+ reloj.ElapsedMilliseconds + "ms)", true);
-            this.logger.loguearResultados(e);
+            this.logger.loguearResultados(e, cantIteraciones);
             Grafica grafica = new Grafica(puntos);
             grafica.Show();
         }

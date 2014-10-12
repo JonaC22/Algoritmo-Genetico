@@ -38,9 +38,10 @@ namespace AlgoritmosGeneticos
             this.box = consola;
         }
 
-        internal void loguearResultados(GaEventArgs e)
+        internal void loguearResultados(GaEventArgs e, long cantIteracionesMax)
         {
             Chromosome cromo;
+            appendText(Color.Indigo, "Cantidad de individuos: " + e.Population.PopulationSize + ", Cantidad de iteraciones Máxima: " + cantIteracionesMax, true ); 
             appendText(Color.Brown, "El mayor valor de ajuste alcanzado por la población final: " + e.Population.MaximumFitness, true);
             appendText(Color.Red, "Número de iteración: " + e.Generation);
             appendText(Color.Red, ", Cantidad de cromosomas evaluados: " + e.Evaluations, true);

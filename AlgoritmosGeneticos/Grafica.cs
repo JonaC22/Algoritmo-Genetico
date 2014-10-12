@@ -22,6 +22,8 @@ namespace AlgoritmosGeneticos
         private void agregarPuntos(List<DataPoint> puntos)
         {   
            puntos.ForEach(x => chart.Series[0].Points.AddXY(x.XValue, x.YValues[0]));
+           chartArea.AxisY.Title = "Times(s)";
+           chartArea.AxisY.Title = "Speed (m/s)";
         }
     }
 }

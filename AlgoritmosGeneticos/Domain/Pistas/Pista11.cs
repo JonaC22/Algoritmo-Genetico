@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace AlgoritmosGeneticos.Domain.Pistas
 {
-   public class Pista11 : Pista
-    {   public Pista11() { }
+    public class Pista11 : Pista
+    {   
         public double validar(List<Modelo> modelos)
         {
             int valorRetorno = -1;
-            List<Modelo> mods_azul = modelos.Where(x => x.color.ToLower() == "azul").ToList();
+            List<Modelo> mods_azul = modelos.FindAll(x => x.posicion == 1);
 
             foreach (Modelo mod in mods_azul)
             {
-                if (mod.posicion == 1) { valorRetorno=1; }
+                if (mod.color == "azul") return valorRetorno = 1;
             }
 
             return valorRetorno;

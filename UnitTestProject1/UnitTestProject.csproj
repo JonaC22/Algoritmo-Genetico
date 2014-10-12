@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="UnitTestPista12.cs" />
     <Compile Include="UnitTestPista1.cs" />
     <Compile Include="UnitTestPista2.cs" />
     <Compile Include="UnitTestPista3.cs" />
@@ -59,9 +60,8 @@
     <Compile Include="UnitTestPista7.cs" />
     <Compile Include="UnitTestPista8.cs" />
     <Compile Include="UnitTestPista9.cs" />
-	<Compile Include="UnitTestPista10.cs" />
+    <Compile Include="UnitTestPista10.cs" />
     <Compile Include="UnitTestPista11.cs" />
-    <Compile Include="UnitTestPista12.cs" />
     <Compile Include="UnitTestPista13.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

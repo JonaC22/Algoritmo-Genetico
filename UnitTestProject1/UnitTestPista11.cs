@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AlgoritmosGeneticos.Domain.Pistas;
 using AlgoritmosGeneticos.Domain;
-using System.Collections.Generic;
 
 namespace UnitTestProject
 {
     [TestClass]
-    class UnitTestPista11
+    public class UnitTestPista11
     {
-        public void TestCondicionVerdadera()
+        public void TestCondicionVerdadera11()
         {
             List<Modelo> modelos = new List<Modelo>();
             modelos.Add(new Modelo("Chevrolet Corsa", "azul", 1, "tostadora"));
@@ -22,10 +21,10 @@ namespace UnitTestProject
         }
 
         [TestMethod]
-        public void TestCondicionFalsaNoBlanco()
+        public void TestCondicionFalsaNoBlanco11()
         {
             List<Modelo> modelos = new List<Modelo>();
-            modelos.Add(new Modelo("Chevrolet Corsa", "Azul", 2, "tostadora"));
+            modelos.Add(new Modelo("Chevrolet Corsa", "azul", 2, "tostadora"));
             Pista11 pista = new Pista11();
             Assert.AreEqual(-1, pista.validar(modelos));
         }

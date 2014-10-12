@@ -10,7 +10,7 @@ namespace UnitTestProject
     public class UnitTestPista13
     {
         [TestMethod]
-        public void TestCondicionVerdadera()
+        public void TestCondicionVerdadera13()
         {
             List<Modelo> modelos = new List<Modelo>();
             modelos.Add(new Modelo("Chevrolet Corsa", "blanco", 5, "tostadora"));
@@ -22,7 +22,7 @@ namespace UnitTestProject
         }
 
         [TestMethod]
-        public void TestCondicionFalsaNoBlanco()
+        public void TestCondicionFalsaNoBlanco13()
         {
             List<Modelo> modelos = new List<Modelo>();
             modelos.Add(new Modelo("Chevrolet Corsa", "Blanco", 5, "tostadora"));

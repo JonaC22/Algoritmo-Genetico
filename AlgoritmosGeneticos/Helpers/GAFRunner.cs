@@ -49,7 +49,7 @@ namespace AlgoritmosGeneticos
             reloj.Start();
             this.progress = progressBar;
             this.cantIteraciones = cantIteraciones;
-            this.fitnessRequired = 150;
+            this.fitnessRequired = 170;
 
             var population = new Population(populationSize: cantPoblacion,
               chromosomeLength: 63,

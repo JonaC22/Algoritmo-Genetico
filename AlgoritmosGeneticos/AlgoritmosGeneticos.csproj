@@ -54,6 +54,8 @@
     <Compile Include="Domain\Modelo.cs" />
     <Compile Include="Domain\ModeloBuilder.cs" />
     <Compile Include="Domain\Pistas\Pista10.cs" />
+    <Compile Include="Domain\Pistas\Pista11.cs" />
+    <Compile Include="Domain\Pistas\Pista12.cs" />
     <Compile Include="Domain\Pistas\Pista13.cs" />
     <Compile Include="Domain\Pistas\Pista4.cs" />
     <Compile Include="Domain\Pistas\Pista3.cs" />

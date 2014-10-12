@@ -44,6 +44,9 @@ namespace AlgoritmosGeneticos.Domain
             pistas.Add(new Pista8());
             pistas.Add(new Pista9());
             pistas.Add(new Pista10());
+            pistas.Add(new Pista11());
+            pistas.Add(new Pista12());
+            pistas.Add(new Pista13());
         }
 
         public double FitnessFunction(Chromosome cromosoma)

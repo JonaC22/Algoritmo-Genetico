@@ -51,7 +51,7 @@ namespace AlgoritmosGeneticos.Domain
 
         public double FitnessFunction(Chromosome cromosoma)
         {
-            double valor = 200;
+            double valor = 500;
 
             List<Modelo> modelos = crearModelos(cromosoma);
 
@@ -59,15 +59,61 @@ namespace AlgoritmosGeneticos.Domain
             foreach (var pista in pistas)
             {
                 valor += constanteFitness * pista.validar(modelos);
+                
             }
 
             //me fijo si tiene partes invalidas => decremento el valor
-            foreach (var pista in pistas)
-            {
-                valor += constanteFitness * validarInvalidos(modelos);
-            }
+            valor += constanteFitness * validarInvalidos(modelos);
+
+            //me fijo si hay posiciones repetidas => decremento el valor
+            valor += constanteFitness * validarPosicionesRepetidas(modelos);
+
+            //me fijo si hay colores repetidos => decremento el valor
+            valor += constanteFitness * validarColoresRepetidas(modelos);
+
+            //me fijo si hay pertenencias repetidas => decremento el valor
+            valor += constanteFitness * validarPertenenciasRepetidas(modelos);
 
             if (valor < 0) valor = 0;
+            return valor;
+        }
+
+        private int validarPertenenciasRepetidas(List<Modelo> modelos)
+        {
+            string pertenencia;
+            int valor = 0;
+            foreach (Modelo modelo in modelos)
+            {
+                pertenencia = modelo.pertenencia;
+                if (modelos.Count(x => x.pertenencia == pertenencia) > 1) return valor -= 10;
+            }
+
+            return valor;
+        }
+
+        private int validarColoresRepetidas(List<Modelo> modelos)
+        {
+            string color;
+            int valor = 0;
+            foreach (Modelo modelo in modelos)
+            {
+                color = modelo.color;
+                if (modelos.Count(x => x.color == color) > 1) return valor -= 10;
+            }
+
+            return valor;
+        }
+
+        private int validarPosicionesRepetidas(List<Modelo> modelos)
+        {
+            int pos;
+            int valor = 0;
+            foreach (Modelo modelo in modelos)
+            {
+                pos = modelo.posicion;
+                if (modelos.Count(x => x.posicion == pos) > 1) return valor -= 10;
+            }
+
             return valor;
         }
 

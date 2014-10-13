@@ -88,7 +88,7 @@
             // trackIteraciones
             // 
             this.trackIteraciones.Location = new System.Drawing.Point(55, 72);
-            this.trackIteraciones.Maximum = 100;
+            this.trackIteraciones.Maximum = 200;
             this.trackIteraciones.Minimum = 1;
             this.trackIteraciones.Name = "trackIteraciones";
             this.trackIteraciones.Size = new System.Drawing.Size(543, 45);

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoritmosGeneticos", "AlgoritmosGeneticos\AlgoritmosGeneticos.csproj", "{07F7C59B-D849-4655-B23C-48640067C188}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject1\UnitTestProject.csproj", "{D9D62F30-41DE-40D4-8F35-E4C0DEED8895}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{D9D62F30-41DE-40D4-8F35-E4C0DEED8895}"
 	ProjectSection(ProjectDependencies) = postProject
 		{07F7C59B-D849-4655-B23C-48640067C188} = {07F7C59B-D849-4655-B23C-48640067C188}
 	EndProjectSection

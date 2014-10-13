@@ -45,6 +45,7 @@ namespace AlgoritmosGeneticos
             }
         }
 
+        //En este metodo se configura los operadores y sus parametros para la corrida
         public void correrAlgoritmoGenetico(ProgressBar progressBar, int cantPoblacion, int cantIteraciones)
         {
             reloj.Start();
@@ -76,6 +77,9 @@ namespace AlgoritmosGeneticos
 
             ga.OnGenerationComplete += ga_OnGenerationComplete;
             ga.OnRunComplete += ga_OnRunComplete;
+
+            //aca se agregan los operadores para el algoritmo genetico
+
             ga.Operators.Add(crossover);
             //ga.Operators.Add(randomReplace);
             ga.Operators.Add(tempMutate);

@@ -12,21 +12,10 @@ namespace AlgoritmosGeneticos.Domain.Pistas
 
         public double validar(List<Modelo> modelos)
         {
-            int pos_max = -1;
-            int valorRetorno = 0;
+            int valorRetorno = -1;
             
-            foreach (Modelo mod in modelos)
-            {
-                if (pos_max <= mod.posicion)
-                {
-                    pos_max = mod.posicion;
-                    if (mod.color.ToLower() == "verde")
-                        valorRetorno = 1;
-                    else
-                        valorRetorno = -1;
-                }
-            }
-
+            if(modelos.Exists(x => x.posicion == 7 && x.color == "verde")) valorRetorno = 1;
+           
             return valorRetorno;
         }
 

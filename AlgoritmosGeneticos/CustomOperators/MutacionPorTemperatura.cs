@@ -11,6 +11,8 @@ namespace AlgoritmosGeneticos.CustomOperators
     public class MutacionPorTemperatura : BinaryMutate
     {
         private readonly object _syncLock = new object();
+        private int tope;
+        private int contador;
         private long cantidadVueltasMax = 0;
         private long cantidadVueltas = 0;
         private double mutationProbabilityMax;
@@ -24,7 +26,13 @@ namespace AlgoritmosGeneticos.CustomOperators
 
         public override void Invoke(Population currentPopulation, ref Population newPopulation, FitnessFunction fitnesFunctionDelegate)
         {
-            cantidadVueltas++;
+            this.tope = currentPopulation.PopulationSize;
+            contador++;
+            if (contador == tope)
+            {
+                contador = 0;
+                cantidadVueltas++;
+            }
             base.Invoke(currentPopulation, ref newPopulation, fitnesFunctionDelegate);
         }
 

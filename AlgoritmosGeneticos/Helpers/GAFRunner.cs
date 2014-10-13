@@ -62,13 +62,13 @@ namespace AlgoritmosGeneticos
             var crossover = new Crossover(0.2)
             {
                 AllowDuplicates = true,
-                CrossoverType = CrossoverType.DoublePoint
+                CrossoverType = CrossoverType.SinglePoint
             };
 
             //var binaryMutate = new BinaryMutate(mutationProbability: 0.01D, allowDuplicates: true);
-            //var randomReplace = new RandomReplace(numberToReplace: 3, allowDuplicates: true);
-            var elite = new Elite(100);
-            var tempMutate = new MutacionPorTemperatura(0.01D, 0.07D, cantIteraciones, true);
+            var randomReplace = new RandomReplace(numberToReplace: 9, allowDuplicates: true);
+            var elite = new Elite(20);
+            var tempMutate = new MutacionPorTemperatura(0.01D, 0.8D, cantIteraciones, true);
             var ga = new GeneticAlgorithm(population, CalculateFitness)
             {
                 UseMemory = false
@@ -77,7 +77,7 @@ namespace AlgoritmosGeneticos
             ga.OnGenerationComplete += ga_OnGenerationComplete;
             ga.OnRunComplete += ga_OnRunComplete;
             ga.Operators.Add(crossover);
-            //ga.Operators.Add(randomReplace);
+            ga.Operators.Add(randomReplace);
             ga.Operators.Add(tempMutate);
             //ga.Operators.Add(binaryMutate);
             ga.Operators.Add(elite);

@@ -65,7 +65,7 @@ namespace AlgoritmosGeneticos
                 CrossoverType = CrossoverType.SinglePoint
             };
 
-            var binaryMutate = new BinaryMutate(mutationProbability: 0.04D, allowDuplicates: true);
+            var binaryMutate = new BinaryMutate(mutationProbability: 0.05D, allowDuplicates: true);
             var randomReplace = new RandomReplace(numberToReplace: 9, allowDuplicates: true);
             var elite = new Elite(1);
             var tempMutate = new MutacionPorTemperatura(0.01D, 0.3D, cantIteraciones, true);

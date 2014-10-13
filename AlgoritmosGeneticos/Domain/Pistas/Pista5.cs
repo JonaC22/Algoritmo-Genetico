@@ -13,11 +13,7 @@ namespace AlgoritmosGeneticos.Domain.Pistas
         public double validar(List<Modelo> modelos)
         {
             int valorRetorno = -1;
-            if(modelos[2].nombre_modelo == "Toyota Corolla")
-            {
-                var auto = modelos[2];
-                if (auto.color == "negro") valorRetorno = 1;
-            }
+            if (modelos[2].color == "negro") valorRetorno = 1;
             return valorRetorno;
         }
     }

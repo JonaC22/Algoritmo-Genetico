@@ -19,11 +19,11 @@ namespace AlgoritmosGeneticos.Domain.Pistas
             {
                 List<Modelo> mod_derecha = modelos.FindAll(x => x.posicion == mod.posicion + 1);
 
-                if (mod_derecha.Count > 0 && mod_derecha.Exists(x => x.pertenencia == "notebook"))valorRetorno = 1;
-                List<Modelo> mod_izq = modelos.FindAll(x => x.posicion == mod.posicion -1);
+                if (mod_derecha.Count > 0 && mod_derecha.Exists(x => x.pertenencia == "notebook")) return valorRetorno = 1;
+                List<Modelo> mod_izq = modelos.FindAll(x => x.posicion == mod.posicion - 1);
 
                 if (mod_izq.Count > 0 && mod_izq.Exists(x => x.pertenencia == "notebook"))
-                    valorRetorno = 1;
+                    return valorRetorno = 1;
             }
 
             return valorRetorno;

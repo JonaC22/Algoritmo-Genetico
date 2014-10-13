@@ -19,13 +19,13 @@ namespace AlgoritmosGeneticos.Domain.Pistas
             {
                 List<Modelo> mod_derecha = modelos.FindAll(x => x.posicion == mod.posicion + 1);
 
-                if(mod_derecha != null && mod_derecha.Exists(x => x.pertenencia == "pelota de futbol"))
-                    valorRetorno = 1;
+                if (mod_derecha != null && mod_derecha.Exists(x => x.pertenencia == "pelota de futbol"))
+                    return valorRetorno = 1;
 
                 List<Modelo> mod_izq = modelos.FindAll(x => x.posicion == mod.posicion - 1);
 
-                if(mod_izq != null && mod_izq.Exists(x => x.pertenencia == "pelota de futbol"))
-                    valorRetorno = 1;
+                if (mod_izq != null && mod_izq.Exists(x => x.pertenencia == "pelota de futbol"))
+                    return valorRetorno = 1;
             }
 
             return valorRetorno;

@@ -20,12 +20,12 @@ namespace AlgoritmosGeneticos.Domain.Pistas
                 List<Modelo> mods_derecha = modelos.FindAll(x => x.posicion == mod.posicion + 1);
 
                 if (mods_derecha != null && mods_derecha.Exists(x => x.pertenencia == "tostadora"))
-                    valorRetorno = 1;
+                    return valorRetorno = 1;
 
                 List<Modelo> mods_izq = modelos.FindAll(x => x.posicion == mod.posicion - 1);
 
                 if (mods_izq != null && mods_izq.Exists(x => x.pertenencia == "tostadora"))
-                    valorRetorno = 1;
+                    return valorRetorno = 1;
             }
 
             return valorRetorno;

@@ -12,13 +12,9 @@ namespace AlgoritmosGeneticos.Domain.Pistas
         {
             int valorRetorno = -1;
             List<Modelo> resultados;
-            if (modelos[2].nombre_modelo == "Toyota Corolla")
-            {
-                int pos = modelos[2].posicion;
-                resultados = modelos.FindAll(x => ((x.posicion == pos - 1) || (x.posicion == pos + 1)));
-                if (resultados.Any(x => x.color == "blanco")) valorRetorno = 1;
-                else valorRetorno = -1;
-            }
+            int pos = modelos[2].posicion;
+            resultados = modelos.FindAll(x => ((x.posicion == pos - 1) || (x.posicion == pos + 1)));
+            if (resultados.Any(x => x.color == "blanco")) return valorRetorno = 1;
             return valorRetorno;
         }
     }

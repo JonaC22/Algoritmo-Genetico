@@ -1,8 +1,5 @@
-IA_2C2014_Sistemas_Inteligentes
+Sistema Inteligente - Algoritmo Genetico
 ===============================
-
-Repositorio del Grupo 1
-
-TP de Sistemas Inteligentes
+Sistemas Inteligentes
 
 Inteligencia Artificial
